@@ -1,0 +1,65 @@
+#cloud-config
+users:
+  - name: ansible
+    groups: sudo
+    shell: /bin/bash
+    sudo: 'ALL=(ALL) NOPASSWD:ALL'
+    ssh-authorized-keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAlwIRZaMSww7stehO08PHPj7K0LriKLNh1M2p8Xum0p student@fhmojl7o3c8ndasgibiq
+
+  - name: kvg
+    groups: sudo
+    shell: /bin/bash
+    sudo: 'ALL=(ALL) NOPASSWD:ALL'
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCQfq/QmTh2S8ex9HzwHdWnEIvY6LyirjcDBviXlXbRLvXD3rMK3k+BwoP+IhOD4iP3Plq3HIqAYP12pXcOmS7YpS7xFsaXeqIQ1k8weVWx5uU+dITxoXba1Ypeh4f7WFCng3vWP2sPf5hKAyHTenzdDUcHxxTirVG96k/GaGeGuQqxBp>
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMysGDL4JYA4VkmxKn5Fr5/kt6cTBhO4eQWMzab/016c kvg@yucas
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK2ynXCTPheXdFh9MM8uv0L3dwNSUuRzNODOE2evf2+9 kvg@x390
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMioEBXYT9WanDcyAwiMgxS5wV7UrmqqburuTdsbxghZ kvg@UbuntuHome
+
+  - name: student
+    groups: sudo
+    shell: /bin/bash
+    sudo: 'ALL=(ALL) NOPASSWD:ALL'
+    ssh-authorized-keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAlwIRZaMSww7stehO08PHPj7K0LriKLNh1M2p8Xum0p student@fhmojl7o3c8ndasgibiq
+
+hostname: vm_02
+
+packages:
+  - curl
+  - mc
+  - ncdu
+  - w3m
+  - neofetch
+  - rsync
+  - nano
+  - vim
+  - smartmontools
+  - htop
+  - mtr
+  - xfsprogs
+  - lvm2
+  - lftp
+  - nmap
+  - unzip
+  - xfsprogs
+  - tmux
+  - ncdu
+  - net-tools
+  - build-essential
+  - tree
+  - apt-transport-https
+  - ca-certificates
+  - software-properties-common
+  - virtualenv
+
+timezone: Europe/Moscow
+
+package_update: true
+package_upgrade: true
+
+runcmd:
+  - echo "Hello from cloud-init" > /home/kvg/hello.txt
+  - sleep 60
+  - sudo reboot
