@@ -15,6 +15,12 @@ ssh_args = -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
 [proxy_servers]
 std-ext-010-91.praktikum-services.tech ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
-[web_server]
+[nginx]
 std-ext-010-92.praktikum-services.tech ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 std-ext-010-93.praktikum-services.tech ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+std-ext-010-91.praktikum-services.tech ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+[web_servers]
+std-ext-010-92.praktikum-services.tech ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+std-ext-010-93.praktikum-services.tech ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
