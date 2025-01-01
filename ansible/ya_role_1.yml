@@ -1,0 +1,37 @@
+---
+- name: 2 tasks for sprint 11
+  hosts: proxy
+  become: true
+  tasks:
+    - name: Set the hostname
+      ansible.builtin.hostname:
+        name: "{{ new_hostname }}"
+
+    - name: Update /etc/hosts with the new hostname
+      lineinfile:
+        path: /etc/hosts
+        regexp: "^127\\.0\\.1\\.1\\s"
+        line: "127.0.1.1 {{ new_hostname }}"
+        state: present
+      become: true
+
+  tasks:
+    - name: Install list of packages
+      ansible.builtin.apt:
+        pkg:
+          - mc
+          - rsync
+          - nano
+          - vim
+          - net-tools
+          - dnsutils
+          - wget
+          - curl
+        state: present
+        update_cache: yes
+
+  tasks:
+    - name: Set timezone to Europe/Moscow
+      become: true
+      community.general.timezone:
+        name: Europe/Moscow

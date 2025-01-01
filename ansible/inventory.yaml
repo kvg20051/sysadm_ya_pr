@@ -1,0 +1,20 @@
+[all:vars]
+ansible_user='kvg'
+#ansible_user='student'
+ansible_become=yes
+ansible_become_method=sudo
+#ansible_python_interpreter='/usr/bin/env python3'
+ansible_python_interpreter=/usr/bin/python3
+ssh_args = -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+
+##########################
+## our aws server names
+## aws-ls-www-1 may be mapped using /etc/hosts or ~/.ssh/config
+## you can use ip address here too
+###########################
+[proxy_servers]
+std-ext-010-91.praktikum-services.tech ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+[web_server]
+std-ext-010-92.praktikum-services.tech ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+std-ext-010-93.praktikum-services.tech ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
